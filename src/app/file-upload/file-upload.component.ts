@@ -1,18 +1,11 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, HostListener } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-file-upload',
+  templateUrl: './file-upload.component.html',
+  styleUrls: ['./file-upload.component.scss'],
 })
-export class AppComponent {
+export class FileUploadComponent {
   selectedImages: File[] = [];
 
   onFileChange(event: any) {
@@ -26,8 +19,8 @@ export class AppComponent {
   previewImages() {
     for (let i = 0; i < this.selectedImages.length; i++) {
       const reader = new FileReader();
+
       reader.onload = (event: any) => {
-        // Display the image preview
         const img = document.createElement('img');
         const imagePreview = document.getElementById('image-preview');
         if (event.target && imagePreview) {
@@ -47,6 +40,7 @@ export class AppComponent {
 
   clearPreview() {
     const previewContainer = document.getElementById('image-preview');
+
     if (previewContainer) {
       while (previewContainer.firstChild) {
         previewContainer.firstChild.remove();

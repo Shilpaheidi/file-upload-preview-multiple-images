@@ -1,0 +1,4 @@
+<input type="file" multiple (change)="onFileChange($event)">
+<div id="image-preview"></div>
+
+<button *ngFor="let image of selectedImages;let i = index" (click)="removeImage(i)">Remove</button>
